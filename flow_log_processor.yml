@@ -1,16 +1,17 @@
-# This workflow will install Python dependencies, run tests 
+# This workflow will install Python dependencies, run tests
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Flow Log Processor
 
 on:
+  workflow_dispatch: # Enables manual triggering
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -32,11 +33,14 @@ jobs:
     - name: Generate Input Files
       run: python generateSampleFiles.py
 
-    - name: Run Flow Log Processor
-      run: python flowLogProcessor.py flow_logs.txt mapping.csv output.txt
+    - name: Run Flow Log Processor and move output file
+      run: |
+          python flowLogProcessor.py flow_logs.txt mapping.csv output.txt
 
-    - name: Upload output file
-      uses: actions/upload-artifact@v4
-      with:
-        name: output-file
-        path: output.txt
+    - name: Commit and push output file
+      run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add output.txt
+          git commit -m "Add output.txt to parent directory"
+          git push
