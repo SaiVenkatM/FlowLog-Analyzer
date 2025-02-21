@@ -1,35 +1,42 @@
+# This workflow will install Python dependencies, run tests 
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
 name: Flow Log Processor
 
 on:
   push:
-    branches:
-      - main 
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
 
 jobs:
-  run_processor:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Generate Input Files
+      run: python generateSampleFiles.py
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x' 
+    - name: Run Flow Log Processor
+      run: python flowLogProcessor.py flow_logs.txt mapping.csv output.txt
 
-      - name: Install dependencies (if any)
-        run: |
-          pip install -r requirements.txt # If you have a requirements.txt
-
-      - name: Generate Input Files
-        run: python generateSampleFiles.py
-
-      - name: Run Flow Log Processor
-        run: python flowLogProcessor.py flow_logs.txt mapping.csv output.txt
-
-      - name: Upload output file
-        uses: actions/upload-artifact@v3
-        with:
-          name: output-file
-          path: output.txt
+    - name: Upload output file
+      uses: actions/upload-artifact@v4
+      with:
+        name: output-file
+        path: output.txt
