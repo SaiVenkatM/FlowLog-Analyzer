@@ -175,7 +175,7 @@ This workflow generates both standard and custom logs, then processes them with 
 2. Navigate to the actions tab, in your github cloned repo
 3. Select the `Flow Log Processor` workflow
 4. In the right panel, click the run workflow dropdown and select ` Run workflow`
-5. Or you can also trigger the workflow either by commiting, push, or pull
+5. Or you can also trigger the workflow either by commiting, push, or pull and check status in actions tab
 6. And the resulting output file would be automatically uploaded to parent folder of the repo.
    
 
