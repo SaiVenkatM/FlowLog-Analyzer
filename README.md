@@ -69,9 +69,7 @@ This creates log files for all versions (2, 3, 4, 5, 7) in a directory called "f
 The generator supports several predefined custom formats:
 
 - **minimal**: Basic fields only (srcaddr, dstaddr, dstport, protocol, action)
-- **network_security**: Fields relevant for security analysis
-- **traffic_analysis**: Fields for bandwidth and traffic pattern analysis
-- **container_tracking**: ECS container-specific fields
+- If required check for code of avaialable groupings
 
 ### Example Commands
 
