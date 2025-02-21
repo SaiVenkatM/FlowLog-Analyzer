@@ -45,9 +45,12 @@ A log aggregation exercise based on on AWS Flow Log Records
 python3 flowLogProcessor.py flow_logs.txt mapping.csv output.txt
 ```
 
-* If you prefer to have it run in github directly
+* If you prefer to have it run in github directly (The flow_logs.txt. mapping.csv are generated according to `generateSampleFiles.py`)
 1. Clone the repo
 2. Navigate to the actions tab, in your github cloned repo
 3. Select the `Flow Log Processor` workflow
 4. In the right panel, click the run workflow dropdown and select ` Run workflow`
+5. Or you can also trigger the workflow either by commiting, push, or pull
+6. And the resulting output file would be automatically uploaded to parent folder of the repo.
+   
 
