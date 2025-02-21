@@ -6,9 +6,9 @@ name: Flow Log Processor
 on:
   workflow_dispatch: # Enables manual triggering
   push:
-    branches: [ "main" ]
+    branches: [ "version1.1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "version1.1" ]
 
 permissions:
   contents: write
