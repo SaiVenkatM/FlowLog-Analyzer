@@ -42,15 +42,14 @@ jobs:
 
     - name: Run Flow Log Processor and move output file
       run: |
-          python3 flowLogProcessor.py flow_logs/flow_logs_mixed.txt mapping.csv output/output_mixed.txt --protocol_mapping_file protocolnumbers1.csv 
-          python3 flowLogProcessor.py flow_logs/flow_logs_custom_minimal.txt mapping.csv output/output_custom_minimal.txt --log_field_names srcaddr dstaddr dstport protocol action --protocol_mapping_file protocolnumbers1.csv
-          python3 flowLogProcessor.py flow_logs/flow_logs_v5.txt mappings.csv output/output_v5.txt --protocol_mapping_file protocolnumbers1.csv 
-          python3 flowLogProcessor.py flow_logs/flow_logs_v3.txt mappings.csv output/output_v3.txt --protocol_mapping_file protocolnumbers1.csv  
-          python3 flowLogProcessor.py flow_logs/flow_logs_v2.txt mappings.csv output/output_v3.txt --protocol_mapping_file protocolnumbers1.csv     
-
-
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add output
-          git commit -m "Adding outputs to parent directory"
-          git push
+         mkdir -p output
+         python3 flowLogProcessor.py flow_logs/flow_logs_mixed.txt mapping.csv output/output_mixed.txt --protocol_mapping_file protocolnumbers1.csv 
+         python3 flowLogProcessor.py flow_logs/flow_logs_custom_minimal.txt mapping.csv output/output_custom_minimal.txt --log_field_names srcaddr dstaddr dstport protocol action --protocol_mapping_file protocolnumbers1.csv
+         python3 flowLogProcessor.py flow_logs/flow_logs_v5.txt mapping.csv output/output_v5.txt --protocol_mapping_file protocolnumbers1.csv 
+         python3 flowLogProcessor.py flow_logs/flow_logs_v3.txt mapping.csv output/output_v3.txt --protocol_mapping_file protocolnumbers1.csv  
+         python3 flowLogProcessor.py flow_logs/flow_logs_v2.txt mapping.csv output/output_v3.txt --protocol_mapping_file protocolnumbers1.csv     
+         git config --global user.email "actions@github.com"
+         git config --global user.name "GitHub Actions"
+         git add output
+         git commit -m "Adding outputs to parent directory"
+         git push
