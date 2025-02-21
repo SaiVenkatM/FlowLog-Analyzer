@@ -1,9 +1,10 @@
-import csv
-from collections import defaultdict
-from typing import Dict, Tuple, List, Optional
 import os
+import csv
 import logging
 import argparse
+from collections import defaultdict
+from typing import Dict, Tuple, List, Optional
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
