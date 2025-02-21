@@ -3,6 +3,8 @@ A log aggregation exercise based on on AWS Flow Log Records
 
 ### The following are the assumptions made while writing the program
 
+* Created for the specific version 2, and could not find much support for other kind of version to create an universal script to work dynamically
+
 * Plain Text Input Files: It's assumed that both input files are plan text files and encoded  n ASCII
 
 * Log Delimeter: Constant delimeter( space by default) seperates fields within each line.
@@ -11,10 +13,10 @@ A log aggregation exercise based on on AWS Flow Log Records
 
 * Data Integrity: It is assumed, the data in files are reasomnably well formed (like in the description provided). And input data will not contain any malicious code
 
-
 * Mapping rules: It is assumed that, the combination of destination port and protocol in mapping rules are unique, and if there are duplicates, the last one read will override the previou one.
 
 * Untagged Logic: The logic relies on the assumptioin that, if a log entry doesnot match any mapping rule, it would be counted as untagged.
+  
 
 
 ### Instructions on running the code 
