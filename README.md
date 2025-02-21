@@ -170,8 +170,8 @@ python flowLogProcessor.py flow_logs_custom_minimal.txt mapping.csv output_minim
 This workflow generates both standard and custom logs, then processes them with appropriate parameters.
 
 
-### If you prefer to have it run in github directly (The flow_logs.txt. mapping.csv are generated according to `generateSampleFiles.py`)
-
+### If you prefer to have it run in github directly 
+* (The flow_logs.txt. mapping.csv are generated according to `generateSampleFiles.py`)
 
 1. Clone the repo
 2. Navigate to the actions tab, in your github cloned repo
